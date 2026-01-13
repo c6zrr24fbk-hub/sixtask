@@ -27,7 +27,7 @@ func isMorseCode(input string) bool {
 		return false
 	}
 
-	allowedChars := ".-/"
+	allowedChars := ".-/ "
 	morseChars := 0
 	totalChars := 0
 
@@ -36,7 +36,7 @@ func isMorseCode(input string) bool {
 		if strings.ContainsRune(allowedChars, char) {
 			morseChars++
 		} else {
-			if char != '\n' && char != '\r' && char != 't' {
+			if char != '\n' && char != '\r' && char != '\t' {
 				return false
 			}
 		}
@@ -47,11 +47,8 @@ func isMorseCode(input string) bool {
 	}
 
 	for _, char := range trimmed {
-		if !strings.ContainsRune(".-/\n\r\t", char) {
-
-			if !strings.ContainsRune(" \n\r\t", char) {
-				return false
-			}
+		if !strings.ContainsRune(".-/ \n\r\t", char) {
+			return false
 		}
 	}
 
